@@ -157,25 +157,33 @@ def printDF(df):
         dataForName = df.loc[df['Well Name'] == Name]
         dataForName = dataForName.sort_values("Depth")
 
-        # plt.subplot(2, 2, 1)
-        # plt.plot(data["date"], data["Depth"], label=Name)
+        fig, axex = plt.subplots(nrows=1, ncols=1)
 
         #plt.subplot(1, 1, 1)
-        #plt.plot(dataForName.index, dataForName["GR"], label=Name)
-        #plt.show()
-        # plt.subplot(2, 2, 3)
-        # plt.plot(data["date"], data["ILD_log10"], label=Name)
+        #axex.plot(dataForName.index, dataForName["PHIND"], label="PHIND")
+
+        #plt.subplot(1, 1, 1)
+        axex.plot(dataForName.index, dataForName["GR"], label="GR")
+
+        #plt.subplot(1, 1, 1)
+        axex.plot(dataForName.index, dataForName["ILD_log10"], label="ILD_log10")
+
+        #plt.subplot(1, 1, 1)
+        axex.plot(dataForName.index, dataForName["DeltaPHI"], label="DeltaPHI")
+        axex.legend()
+
+        plt.show()
 
         # plt.plot(data["date"], data["DeltaPHI"], label=Name)
         #plt.figure(i, figsize=(5, 5))
-        fig, axex = plt.subplots(nrows=1, ncols=1)
+
         #plt.subplot(1, 9, i)
 
-        df_subset = BuildModel(dataForName[["GR"]])
+        #df_subset = BuildModel(dataForName[["GR"]])
         #plt.subplots_adjust(wspace=0, hspace=i)
-        dataForName[["GR"]].plot(ax=axex, legend=False)
-        if len(df_subset) > 0:
-            df_subset.plot(ax=axex, legend=False, color="r")
+        #dataForName[["GR"]].plot(ax=axex, legend=False)
+        #if len(df_subset) > 0:
+        #    df_subset.plot(ax=axex, legend=False, color="r")
 
         #plt.subplots_adjust(wspace=0, hspace=i)
         #plt.plot(df, legend=False)
