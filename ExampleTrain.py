@@ -3,6 +3,7 @@ import datetime
 import numpy as np
 import pandas as pd
 import csv
+import ctypes
 
 from tensorflow import keras
 from tensorflow.keras import layers
@@ -15,9 +16,6 @@ from decimal import Decimal
 # from keras.layers import Dense
 # from keras.layers import LSTM
 # from keras.layers import Dropout
-
-# class Well(Thing):
-# ontology = onto
 
 
 def SearchAnomaly(df):
@@ -178,27 +176,27 @@ def UsingOntology(df_anomaly):
                 hasDate=str(index),
                 hasWell_Name=anomaly['Well Name'])
             #print(Decimal(anomaly['DeltaPHI']*1000))
-            well.hasDeltaPHI = (anomaly['DeltaPHI']*1000)//1
-            well.hasDepth = (anomaly['Depth']*1000)//1
-            well.hasGR = (anomaly['GR']*1000)//1
+            well.hasDeltaPHI = (anomaly['DeltaPHI'])
+            well.hasDepth = (anomaly['Depth'])
+            well.hasGR = (anomaly['GR'])
             #print(onto.hasDepth.range)
 
         #sync_reasoner_pellet(infer_property_values=True, infer_data_property_values=True, debug=3)
-        #onto.save(file="prototypePython.owl", format="rdfxml")
+        onto.save(file="prototypePython.owl", format="rdfxml")
 
-        onto2 = get_ontology("prototypePython.owl").load()
-        #print(df_anomaly.index)
-        anomalous_data_indices = []
-        for SWRLanomaly in onto2.individuals():
-            if not SWRLanomaly.hasAnomaly:
-                #print(pd.to_datetime(SWRLanomaly.hasDate, format='%Y-%m-%d') unit='s'))
+    ctypes.windll.user32.MessageBoxW(0, "Запустите правила", "Пауза", 1)
 
-                anomalous_data_indices.append(pd.to_datetime(SWRLanomaly.hasDate, format='%Y-%m-%d'))
-        #anomalous_data_indices = pd.DataFrame(anomalous_data_indices, columns=['date']).set_index('date')
-        #print(anomalous_data_indices.index)
-        df_subset = df_anomaly.loc[anomalous_data_indices]
-        print(df_subset)
-        #onto.save(file="prototypePython.owl", format="rdfxml")
+    onto2 = get_ontology("prototypePython.owl").load()
+    #print(df_anomaly.index)
+    anomalous_data_indices = []
+    for SWRLanomaly in onto2.individuals():
+        if SWRLanomaly.hasAnomaly:
+            #print(pd.to_datetime(SWRLanomaly.hasDate, format='%Y-%m-%d') unit='s'))
+
+            anomalous_data_indices.append(pd.to_datetime(SWRLanomaly.hasDate, format='%Y-%m-%d'))
+    #print(anomalous_data_indices.index)
+    df_subset = df_anomaly.loc[anomalous_data_indices]
+    #onto.save(file="prototypePython.owl", format="rdfxml")
 
     return df_subset
 
@@ -218,7 +216,7 @@ def printDF(df):
     # ax.yaxis.set_major_locator(ticker.MultipleLocator(10))
 
     i = 1
-    for Name in dfNames[:1]:
+    for Name in dfNames[5:6]:
         Name = Name[0]
         dataForName = df.loc[df['Well Name'] == Name]
         dataForName = dataForName.sort_values("Depth")
@@ -241,16 +239,22 @@ def printDF(df):
 
         # plt.subplot(1, 9, i)
 
-        # df_subset = SearchAnomaly(dataForName[["GR"]])
-        # plt.subplots_adjust(wspace=0, hspace=i)
-        # dataForName[["GR"]].plot(ax=axex, legend=False)
-        # if len(df_subset) > 0:
-        #    df_subset.plot(ax=axex, legend=False, color="r")
+        df_subset = SearchAnomaly(dataForName[["GR"]])
+        #print(df_subset)
+        plt.subplots_adjust(wspace=0, hspace=i)
+        dataForName[["GR"]].plot(ax=axex, legend=False, color="black")
+        if len(df_subset) > 0:
+            df_subset.plot(ax=axex, legend=False, color="r", marker='s', linewidth=0)
 
-        owl_ontology = UsingOntology(dataForName)
+        df_subset = dataForName.loc[df_subset.index]
+        owl_ontology = UsingOntology(df_subset)
+        #print(owl_ontology)
+        if len(owl_ontology) > 0:
+            owl_ontology["GR"].plot(ax=axex, legend=False, color="b", marker='o', linewidth=0)
+
         i += 1
     plt.ioff()
-    #plt.show()
+    plt.show()
 
 
 # pd.set_option('display.max_rows', None)
