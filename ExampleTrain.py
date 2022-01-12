@@ -9,14 +9,6 @@ from tensorflow import keras
 from tensorflow.keras import layers
 from matplotlib import pyplot as plt
 from owlready2 import *
-from decimal import Decimal
-
-# from datetime import datetime
-
-# from keras.layers import Dense
-# from keras.layers import LSTM
-# from keras.layers import Dropout
-
 
 def SearchAnomaly(df):
     split = 0.5
@@ -68,6 +60,9 @@ def SearchAnomaly(df):
                 filters=16, kernel_size=7, padding="same", strides=2, activation="relu"
             ),
             layers.Dropout(rate=0.2),
+
+            #layers.LSTM(32, return_sequences=True, activation="relu"),
+
             layers.Conv1DTranspose(
                 filters=32, kernel_size=7, padding="same", strides=2, activation="relu"
             ),
@@ -102,13 +97,11 @@ def SearchAnomaly(df):
     # plt.show()
 
     threshold = np.max(train_mae_loss)
-    print("Reconstruction error threshold: ", threshold)
 
     # plt.plot(x_train[0])
     # plt.plot(x_train_pred[0])
     # plt.show()
 
-    # Get test MAE loss.
     x_test_pred = model.predict(x_test)
     test_mae_loss = np.mean(np.abs(x_test_pred - x_test), axis=1)
     test_mae_loss = test_mae_loss.reshape((-1))
@@ -118,10 +111,7 @@ def SearchAnomaly(df):
     # plt.ylabel("No of samples")
     # plt.show()
 
-    # Detect all the samples which are anomalies.
     anomalies = test_mae_loss > threshold
-    print("Number of anomaly samples: ", np.sum(anomalies))
-    print("Indices of anomaly samples: ", np.where(anomalies))
 
     anomalous_data_indices = []
     for data_idx in range(TIME_STEPS - 1, len(df_test_value) - TIME_STEPS + 1):
@@ -137,8 +127,7 @@ def SearchAnomaly(df):
 
 
 def UsingOntology(df_anomaly):
-    # onto_path.append("C:/Users/Dimon/PycharmProjects/protorype/")
-    # onto = get_ontology("C://Users/Dimon/PycharmProjects/protorype/prototype.owl").load()
+
     onto = get_ontology("prototype.owl").load()
 
     for individual in onto.individuals():
@@ -146,6 +135,7 @@ def UsingOntology(df_anomaly):
     # print(df_anomaly)
 
     with onto:
+
         # class Well2(Thing):
         #     namespace = onto
         #     pass
@@ -182,6 +172,7 @@ def UsingOntology(df_anomaly):
             #print(onto.hasDepth.range)
 
         #sync_reasoner_pellet(infer_property_values=True, infer_data_property_values=True, debug=3)
+
         onto.save(file="prototypePython.owl", format="rdfxml")
 
     ctypes.windll.user32.MessageBoxW(0, "Запустите правила", "Пауза", 1)
@@ -210,11 +201,6 @@ def printDF(df):
     # print(dfNames)
     # ['CHURCHMAN BIBLE' 'CROSS H CATTLE' 'LUKE G U' 'NEWBY' 'NOLAN' 'Recruit F9' 'SHANKLE' 'SHRIMPLIN']
 
-    # plt.figure(1, figsize=(20, 10))
-    # plt.subplots_adjust(wspace=0, hspace=1)
-    # ax = plt.gca()
-    # ax.yaxis.set_major_locator(ticker.MultipleLocator(10))
-
     i = 1
     for Name in dfNames[5:6]:
         Name = Name[0]
@@ -229,7 +215,7 @@ def printDF(df):
 
         # axex.plot(dataForName.index, dataForName["ILD_log10"], label="ILD_log10")
 
-        #axex.plot(dataForName.index, dataForName["DeltaPHI"], label="DeltaPHI")
+        # axex.plot(dataForName.index, dataForName["DeltaPHI"], label="DeltaPHI")
         # axex.legend()
 
         #plt.show()
@@ -242,15 +228,15 @@ def printDF(df):
         df_subset = SearchAnomaly(dataForName[["GR"]])
         #print(df_subset)
         plt.subplots_adjust(wspace=0, hspace=i)
-        dataForName[["GR"]].plot(ax=axex, legend=False, color="black")
+        dataForName[["GR"]].plot(ax=axex, legend=True, color="black")
         if len(df_subset) > 0:
             df_subset.plot(ax=axex, legend=False, color="r", marker='s', linewidth=0)
 
         df_subset = dataForName.loc[df_subset.index]
-        owl_ontology = UsingOntology(df_subset)
+        #owl_ontology = UsingOntology(df_subset)
         #print(owl_ontology)
-        if len(owl_ontology) > 0:
-            owl_ontology["GR"].plot(ax=axex, legend=False, color="b", marker='o', linewidth=0)
+        #if len(owl_ontology) > 0:
+        #    owl_ontology["GR"].plot(ax=axex, legend=False, color="b", marker='o', linewidth=0)
 
         i += 1
     plt.ioff()
@@ -265,8 +251,10 @@ pd.options.display.expand_frame_repr = False
 with open('facies_data.csv', newline='') as csvfile:
     date = datetime.date.today()
     dfSource = pd.DataFrame(csv.reader(csvfile, delimiter=',', quotechar='|'))
+
     # print(df.columns)
     # ['Facies','Formation','Well Name','Depth','GR','ILD_log10','DeltaPHI','PHIND','PE','NM_M','RELPOS','date']
+
     dfSource.columns = dfSource.iloc[0]
     dfSource.drop([0], inplace=True)
     dfSource = dfSource.reset_index(drop=True)
