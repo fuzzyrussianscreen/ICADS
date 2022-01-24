@@ -70,7 +70,7 @@
                 <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
             </owl:Restriction>
         </rdfs:domain>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
     </owl:DatatypeProperty>
     
 
@@ -84,10 +84,10 @@
         <rdfs:domain>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDeltaPHI"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
             </owl:Restriction>
         </rdfs:domain>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
     </owl:DatatypeProperty>
     
 
@@ -101,10 +101,10 @@
         <rdfs:domain>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDepth"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
             </owl:Restriction>
         </rdfs:domain>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
     </owl:DatatypeProperty>
     
 
@@ -118,10 +118,10 @@
         <rdfs:domain>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDepth"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
             </owl:Restriction>
         </rdfs:domain>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
     </owl:DatatypeProperty>
     
 
@@ -190,7 +190,7 @@
         <rdf:type>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDepth"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
             </owl:Restriction>
         </rdf:type>
         <rdf:type>
@@ -202,17 +202,17 @@
         <rdf:type>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDeltaPHI"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
             </owl:Restriction>
         </rdf:type>
         <rdf:type>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDepth"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
             </owl:Restriction>
         </rdf:type>
         <hasAnomaly rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasAnomaly>
-        <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2029-06-15 00:00:00</hasDate>
+        <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2029-06-16 00:00:00</hasDate>
         <hasDeltaPHI rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-2.5</hasDeltaPHI>
         <hasDepth rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2999.0</hasDepth>
         <hasGR rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">166.94</hasGR>
@@ -240,7 +240,7 @@
         <rdf:type>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDepth"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
             </owl:Restriction>
         </rdf:type>
         <rdf:type>
@@ -252,17 +252,17 @@
         <rdf:type>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDeltaPHI"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
             </owl:Restriction>
         </rdf:type>
         <rdf:type>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDepth"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
             </owl:Restriction>
         </rdf:type>
         <hasAnomaly rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasAnomaly>
-        <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2029-06-16 00:00:00</hasDate>
+        <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2029-06-17 00:00:00</hasDate>
         <hasDeltaPHI rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-0.1</hasDeltaPHI>
         <hasDepth rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2999.5</hasDepth>
         <hasGR rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">235.25</hasGR>
@@ -284,7 +284,7 @@
         <rdf:type>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDepth"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
             </owl:Restriction>
         </rdf:type>
         <rdf:type>
@@ -296,16 +296,16 @@
         <rdf:type>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDeltaPHI"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
             </owl:Restriction>
         </rdf:type>
         <rdf:type>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDepth"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
             </owl:Restriction>
         </rdf:type>
-        <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2029-06-17 00:00:00</hasDate>
+        <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2029-06-18 00:00:00</hasDate>
         <hasDeltaPHI rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.0</hasDeltaPHI>
         <hasDepth rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3000.0</hasDepth>
         <hasGR rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">285.47</hasGR>
@@ -327,7 +327,7 @@
         <rdf:type>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDepth"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
             </owl:Restriction>
         </rdf:type>
         <rdf:type>
@@ -339,16 +339,16 @@
         <rdf:type>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDeltaPHI"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
             </owl:Restriction>
         </rdf:type>
         <rdf:type>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDepth"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
             </owl:Restriction>
         </rdf:type>
-        <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2029-06-18 00:00:00</hasDate>
+        <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2029-06-19 00:00:00</hasDate>
         <hasDeltaPHI rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">4.4</hasDeltaPHI>
         <hasDepth rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3000.5</hasDepth>
         <hasGR rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">305.87</hasGR>
@@ -370,7 +370,7 @@
         <rdf:type>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDepth"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
             </owl:Restriction>
         </rdf:type>
         <rdf:type>
@@ -382,16 +382,16 @@
         <rdf:type>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDeltaPHI"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
             </owl:Restriction>
         </rdf:type>
         <rdf:type>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDepth"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
             </owl:Restriction>
         </rdf:type>
-        <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2029-06-19 00:00:00</hasDate>
+        <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2029-06-20 00:00:00</hasDate>
         <hasDeltaPHI rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">4.9</hasDeltaPHI>
         <hasDepth rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3001.0</hasDepth>
         <hasGR rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">291.37</hasGR>
@@ -413,7 +413,7 @@
         <rdf:type>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDepth"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
             </owl:Restriction>
         </rdf:type>
         <rdf:type>
@@ -425,16 +425,16 @@
         <rdf:type>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDeltaPHI"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
             </owl:Restriction>
         </rdf:type>
         <rdf:type>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDepth"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
             </owl:Restriction>
         </rdf:type>
-        <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2029-06-20 00:00:00</hasDate>
+        <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2029-06-21 00:00:00</hasDate>
         <hasDeltaPHI rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">4.2</hasDeltaPHI>
         <hasDepth rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3001.5</hasDepth>
         <hasGR rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">252.41</hasGR>
@@ -462,7 +462,7 @@
         <rdf:type>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDepth"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
             </owl:Restriction>
         </rdf:type>
         <rdf:type>
@@ -474,17 +474,17 @@
         <rdf:type>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDeltaPHI"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
             </owl:Restriction>
         </rdf:type>
         <rdf:type>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDepth"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
             </owl:Restriction>
         </rdf:type>
         <hasAnomaly rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasAnomaly>
-        <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2029-06-21 00:00:00</hasDate>
+        <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2029-06-22 00:00:00</hasDate>
         <hasDeltaPHI rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.3</hasDeltaPHI>
         <hasDepth rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3002.0</hasDepth>
         <hasGR rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">208.53</hasGR>
@@ -512,7 +512,7 @@
         <rdf:type>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDepth"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
             </owl:Restriction>
         </rdf:type>
         <rdf:type>
@@ -524,17 +524,17 @@
         <rdf:type>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDeltaPHI"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
             </owl:Restriction>
         </rdf:type>
         <rdf:type>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDepth"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
             </owl:Restriction>
         </rdf:type>
         <hasAnomaly rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasAnomaly>
-        <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2029-06-22 00:00:00</hasDate>
+        <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2029-06-23 00:00:00</hasDate>
         <hasDeltaPHI rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-0.2</hasDeltaPHI>
         <hasDepth rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3002.5</hasDepth>
         <hasGR rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">169.07</hasGR>
@@ -556,7 +556,7 @@
         <rdf:type>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDepth"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
             </owl:Restriction>
         </rdf:type>
         <rdf:type>
@@ -568,16 +568,16 @@
         <rdf:type>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDeltaPHI"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
             </owl:Restriction>
         </rdf:type>
         <rdf:type>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDepth"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
             </owl:Restriction>
         </rdf:type>
-        <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2029-06-23 00:00:00</hasDate>
+        <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2029-06-24 00:00:00</hasDate>
         <hasDeltaPHI rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.5</hasDeltaPHI>
         <hasDepth rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3003.0</hasDepth>
         <hasGR rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">136.52</hasGR>

@@ -1,4 +1,3 @@
-import datetime
 
 import numpy as np
 import pandas as pd
@@ -10,7 +9,7 @@ from tensorflow.keras import layers
 from matplotlib import pyplot as plt
 from owlready2 import *
 
-def SearchAnomaly(df):
+def SearchAnomaly(df, axex):
     split = 0.5
 
     cutoff = int(len(df) * split)
@@ -32,19 +31,22 @@ def SearchAnomaly(df):
 
     def create_sequences(values, time_steps=TIME_STEPS):
         output = []
-        for i in range(len(values) - time_steps + 1):
+        for i in range(0, len(values) - time_steps + 1):
             output.append(values[i: (i + time_steps)])
-        print(len(values))
+            #print(i, values[(i - time_steps//2): (i + time_steps//2)])
+            #pd.DataFrame(array).plot(ax=axex, label=str(i),color="b")
+            #pd.DataFrame(x_train[0][i], index=range(0, len(x_train[0][i]))).plot(ax=axex, label = str(i), color="black")
+
         return np.stack(output)
 
     # print(df_training_value.values)
     # print(df_test_value.values)
 
     x_train = create_sequences(df_training_value.values)
-    print("Training input shape: ", x_train.shape)
+    #print("Training input shape: ", x_train.shape)
 
     x_test = create_sequences(df_test_value.values)
-    print("Test input shape: ", x_test.shape)
+    #print("Test input shape: ", x_test.shape)
 
     model = keras.Sequential(
         [
@@ -78,31 +80,52 @@ def SearchAnomaly(df):
         epochs=50,
         batch_size=50,
         validation_split=0.1,
+        verbose=0,
         callbacks=[
             keras.callbacks.EarlyStopping(monitor="val_loss", patience=5, mode="min")
         ],
     )
 
-    # plt.plot(history.history["loss"], label="Training Loss")
-    # plt.plot(history.history["val_loss"], label="Validation Loss")
-    # plt.legend()
-    # plt.show()
 
-    x_train_pred = model.predict(x_train)
+
+    #plt.plot(history.history["loss"], label="Training Loss")
+    #plt.plot(history.history["val_loss"], label="Validation Loss")
+    #plt.legend()
+    #plt.show()
+
+    x_train_pred = model.predict(x_train).transpose()
+
+
+    x_train = x_train.transpose()
+
+    #pd.DataFrame(df_training_value.values).plot(ax=axex, label='x_train', color="r", marker='s', linewidth=0)
+    #for i in range(0, 11):
+        #print(pd.DataFrame(x_train_pred[0][i]))
+        #pd.DataFrame(x_train_pred[0][i]).plot(ax=axex, label = str(i), color="b")
+        #pd.DataFrame(x_train[0][i]).plot(ax=axex, label = str(i), color="black")
+
+    x_train = x_train.transpose()
     train_mae_loss = np.mean(np.abs(x_train_pred - x_train), axis=1)
-
     # plt.hist(train_mae_loss, bins=50)
     # plt.xlabel("Train MAE loss")
     # plt.ylabel("No of samples")
     # plt.show()
 
     threshold = np.max(train_mae_loss)
+    #pd.DataFrame(np.max(train_mae_loss)).plot(ax=axex, label="threshold", color="green")
 
     # plt.plot(x_train[0])
     # plt.plot(x_train_pred[0])
     # plt.show()
+    for k in range(0, 1):
+        x_test_pred = model.predict(x_test)
+        x_test_pred = x_test_pred.transpose()
 
-    x_test_pred = model.predict(x_test)
+        for i in range(0, len(x_test_pred[0])):
+            pd.DataFrame(x_test_pred[0][i], index=range(i, i+len(x_test_pred[0][i]))).plot(ax=axex, label = str(i), color="b")
+
+    pd.DataFrame(df_test_value.values).plot(ax=axex, label='x_train', color="r", marker='s', linewidth=0)
+
     test_mae_loss = np.mean(np.abs(x_test_pred - x_test), axis=1)
     test_mae_loss = test_mae_loss.reshape((-1))
 
@@ -208,7 +231,7 @@ def printDF(df):
         dataForName = dataForName.sort_values("Depth")
 
         fig, axex = plt.subplots(nrows=1, ncols=1)
-
+        fig.subplots_adjust( left = 0.040, bottom = 0.060, right = 0.990, top = 0.990)
         # axex.plot(dataForName.index, dataForName["PHIND"], label="PHIND")
 
         # axex.plot(dataForName.index, dataForName["GR"], label="GR")
@@ -225,14 +248,14 @@ def printDF(df):
 
         # plt.subplot(1, 9, i)
 
-        df_subset = SearchAnomaly(dataForName[["GR"]])
+        df_subset = SearchAnomaly(dataForName[["GR"]], axex)
         #print(df_subset)
-        plt.subplots_adjust(wspace=0, hspace=i)
-        dataForName[["GR"]].plot(ax=axex, legend=True, color="black")
-        if len(df_subset) > 0:
-            df_subset.plot(ax=axex, legend=False, color="r", marker='s', linewidth=0)
+        #plt.subplots_adjust(wspace=0, hspace=i)
+        #dataForName[["GR"]].plot(ax=axex, legend=True, color="black")
+        #if len(df_subset) > 0:
+            #df_subset.plot(ax=axex, legend=False, color="r", marker='s', linewidth=0)
 
-        df_subset = dataForName.loc[df_subset.index]
+        #df_subset = dataForName.loc[df_subset.index]
         #owl_ontology = UsingOntology(df_subset)
         #print(owl_ontology)
         #if len(owl_ontology) > 0:
