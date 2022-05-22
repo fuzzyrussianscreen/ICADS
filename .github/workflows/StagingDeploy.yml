@@ -36,7 +36,7 @@ jobs:
               repo: context.repo.repo,
               name: '${{ github.event.label.name }}'
             })
-converge:
+  converge:
     name: Converge
     if: github.event.label.name == 'staging_deploy'
     runs-on: ubuntu-latest
