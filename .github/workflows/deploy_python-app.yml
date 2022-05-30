@@ -37,5 +37,4 @@ jobs:
     - name: Test with pytest
       run: |
        pip install pandas
-       pip install csv
         pytest test.py
