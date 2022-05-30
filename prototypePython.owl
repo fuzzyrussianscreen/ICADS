@@ -1,263 +1,694 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-         xmlns:owl="http://www.w3.org/2002/07/owl#"
-         xml:base="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2"
-         xmlns="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#"
-         xmlns:swrl="http://www.w3.org/2003/11/swrl#"
-         xmlns:swrl2="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#">
-
-<owl:Ontology rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2"/>
-
-<owl:DatatypeProperty rdf:about="#hasAnomaly">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-  <rdfs:domain rdf:resource="#Well"/>
-  <rdfs:domain>
-    <owl:Restriction>
-      <owl:onProperty rdf:resource="#hasAnomaly"/>
-      <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
-    </owl:Restriction>
-  </rdfs:domain>
-  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
-  <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-</owl:DatatypeProperty>
-
-<owl:DatatypeProperty rdf:about="#hasDate">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-  <rdfs:domain rdf:resource="#Well"/>
-  <rdfs:domain>
-    <owl:Restriction>
-      <owl:onProperty rdf:resource="#hasDate"/>
-      <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
-    </owl:Restriction>
-  </rdfs:domain>
-  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
-  <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-</owl:DatatypeProperty>
-
-<owl:DatatypeProperty rdf:about="#hasDeltaPHI">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-  <rdfs:domain rdf:resource="#Well"/>
-  <rdfs:domain>
-    <owl:Restriction>
-      <owl:onProperty rdf:resource="#hasDeltaPHI"/>
-      <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-    </owl:Restriction>
-  </rdfs:domain>
-  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-  <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-</owl:DatatypeProperty>
-
-<owl:DatatypeProperty rdf:about="#hasDepth">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-  <rdfs:domain rdf:resource="#Well"/>
-  <rdfs:domain>
-    <owl:Restriction>
-      <owl:onProperty rdf:resource="#hasDepth"/>
-      <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-    </owl:Restriction>
-  </rdfs:domain>
-  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-  <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-</owl:DatatypeProperty>
-
-<owl:DatatypeProperty rdf:about="#hasGR">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-  <rdfs:domain rdf:resource="#Well"/>
-  <rdfs:domain>
-    <owl:Restriction>
-      <owl:onProperty rdf:resource="#hasDepth"/>
-      <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-    </owl:Restriction>
-  </rdfs:domain>
-  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-  <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-</owl:DatatypeProperty>
-
-<owl:DatatypeProperty rdf:about="#hasWell_Name">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-  <rdfs:domain rdf:resource="#Well"/>
-  <rdfs:domain>
-    <owl:Restriction>
-      <owl:onProperty rdf:resource="#hasWell_Name"/>
-      <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:Restriction>
-  </rdfs:domain>
-  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-  <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-</owl:DatatypeProperty>
-
-<owl:AnnotationProperty rdf:about="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
-
-<owl:Class rdf:about="#Well"/>
-
-<swrl:Variable rdf:about="#x"/>
-
-<swrl:Variable rdf:about="#gr"/>
-
-<swrl:Variable rdf:about="#deltaphi"/>
-
-<Well rdf:about="#well1">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2029-10-31 00:00:00</hasDate>
-  <hasDeltaPHI rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-2.5</hasDeltaPHI>
-  <hasDepth rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2999.0</hasDepth>
-  <hasGR rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">166.94</hasGR>
-  <hasWell_Name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NEWBY</hasWell_Name>
-</Well>
-
-<Well rdf:about="#well2">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2029-11-01 00:00:00</hasDate>
-  <hasDeltaPHI rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-0.1</hasDeltaPHI>
-  <hasDepth rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2999.5</hasDepth>
-  <hasGR rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">235.25</hasGR>
-  <hasWell_Name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NEWBY</hasWell_Name>
-</Well>
-
-<Well rdf:about="#well3">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2029-11-02 00:00:00</hasDate>
-  <hasDeltaPHI rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.0</hasDeltaPHI>
-  <hasDepth rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3000.0</hasDepth>
-  <hasGR rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">285.47</hasGR>
-  <hasWell_Name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NEWBY</hasWell_Name>
-</Well>
-
-<Well rdf:about="#well4">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2029-11-03 00:00:00</hasDate>
-  <hasDeltaPHI rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">4.4</hasDeltaPHI>
-  <hasDepth rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3000.5</hasDepth>
-  <hasGR rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">305.87</hasGR>
-  <hasWell_Name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NEWBY</hasWell_Name>
-</Well>
-
-<Well rdf:about="#well5">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2029-11-04 00:00:00</hasDate>
-  <hasDeltaPHI rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">4.9</hasDeltaPHI>
-  <hasDepth rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3001.0</hasDepth>
-  <hasGR rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">291.37</hasGR>
-  <hasWell_Name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NEWBY</hasWell_Name>
-</Well>
-
-<Well rdf:about="#well6">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2029-11-05 00:00:00</hasDate>
-  <hasDeltaPHI rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">4.2</hasDeltaPHI>
-  <hasDepth rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3001.5</hasDepth>
-  <hasGR rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">252.41</hasGR>
-  <hasWell_Name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NEWBY</hasWell_Name>
-</Well>
-
-<Well rdf:about="#well7">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2029-11-06 00:00:00</hasDate>
-  <hasDeltaPHI rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.3</hasDeltaPHI>
-  <hasDepth rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3002.0</hasDepth>
-  <hasGR rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">208.53</hasGR>
-  <hasWell_Name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NEWBY</hasWell_Name>
-</Well>
-
-<Well rdf:about="#well8">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2029-11-07 00:00:00</hasDate>
-  <hasDeltaPHI rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-0.2</hasDeltaPHI>
-  <hasDepth rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3002.5</hasDepth>
-  <hasGR rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">169.07</hasGR>
-  <hasWell_Name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NEWBY</hasWell_Name>
-</Well>
-
-<Well rdf:about="#well9">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2029-11-08 00:00:00</hasDate>
-  <hasDeltaPHI rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.5</hasDeltaPHI>
-  <hasDepth rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3003.0</hasDepth>
-  <hasGR rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">136.52</hasGR>
-  <hasWell_Name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NEWBY</hasWell_Name>
-</Well>
-
-<Well rdf:about="#well10">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2030-02-08 00:00:00</hasDate>
-  <hasDeltaPHI rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-0.8</hasDeltaPHI>
-  <hasDepth rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3049.0</hasDepth>
-  <hasGR rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">112.92</hasGR>
-  <hasWell_Name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NEWBY</hasWell_Name>
-</Well>
-
-<swrl:Imp>
-  <swrl:body>
-    <swrl:AtomList>
-      <rdf:first>
-        <swrl:DatavaluedPropertyAtom>
-          <swrl:propertyPredicate rdf:resource="#hasGR"/>
-          <swrl:argument1 rdf:resource="#x"/>
-          <swrl:argument2 rdf:resource="#gr"/>
-        </swrl:DatavaluedPropertyAtom>
-      </rdf:first>
-      <rdf:rest>
-        <swrl:AtomList>
-          <rdf:first>
-            <swrl:ClassAtom>
-              <swrl:classPredicate rdf:resource="#Well"/>
-              <swrl:argument1 rdf:resource="#x"/>
-            </swrl:ClassAtom>
-          </rdf:first>
-          <rdf:rest>
-            <swrl:AtomList>
-              <rdf:first>
-                <swrl:DatavaluedPropertyAtom>
-                  <swrl:propertyPredicate rdf:resource="#hasDeltaPHI"/>
-                  <swrl:argument1 rdf:resource="#x"/>
-                  <swrl:argument2 rdf:resource="#deltaphi"/>
-                </swrl:DatavaluedPropertyAtom>
-              </rdf:first>
-              <rdf:rest>
-                <swrl:AtomList>
-                  <rdf:first>
-                    <swrl:BuiltinAtom>
-                      <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#lessThan"/>
-                      <swrl:arguments>
-                        <rdf:List>
-                          <rdf:first rdf:resource="#deltaphi"/>
-                          <rdf:rest>
-                            <rdf:List>
-                              <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-                              <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</rdf:first>
-                            </rdf:List>
-                          </rdf:rest>
-                        </rdf:List>
-                      </swrl:arguments>
-                    </swrl:BuiltinAtom>
-                  </rdf:first>
-                  <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-                </swrl:AtomList>
-              </rdf:rest>
-            </swrl:AtomList>
-          </rdf:rest>
-        </swrl:AtomList>
-      </rdf:rest>
-    </swrl:AtomList>
-  </swrl:body>
-  <swrl:head>
-    <swrl:AtomList>
-      <rdf:first>
-        <swrl:DatavaluedPropertyAtom>
-          <swrl:propertyPredicate rdf:resource="#hasAnomaly"/>
-          <swrl:argument1 rdf:resource="#x"/>
-          <swrl:argument2 rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrl:argument2>
-        </swrl:DatavaluedPropertyAtom>
-      </rdf:first>
-      <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-    </swrl:AtomList>
-  </swrl:head>
-  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:comment>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">S1</rdfs:label>
-  <swrl2:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrl2:isRuleEnabled>
-</swrl:Imp>
+<rdf:RDF xmlns="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#"
+     xml:base="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:swrl2="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2"/>
+    
 
 
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled -->
+
+    <owl:AnnotationProperty rdf:about="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasAnomaly -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasAnomaly">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#Well"/>
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasAnomaly"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDate -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDate">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#Well"/>
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDate"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDeltaPHI -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDeltaPHI">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#Well"/>
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDeltaPHI"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDepth -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDepth">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#Well"/>
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDepth"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasGR -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasGR">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#Well"/>
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDepth"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasWell_Name -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasWell_Name">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#Well"/>
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasWell_Name"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#Well -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#Well"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#well1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#well1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#Well"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasAnomaly"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDate"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDepth"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasWell_Name"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDeltaPHI"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDepth"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+            </owl:Restriction>
+        </rdf:type>
+        <hasAnomaly rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasAnomaly>
+        <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2029-06-16 00:00:00</hasDate>
+        <hasDeltaPHI rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-2.5</hasDeltaPHI>
+        <hasDepth rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2999.0</hasDepth>
+        <hasGR rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">166.94</hasGR>
+        <hasWell_Name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NEWBY</hasWell_Name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#well2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#well2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#Well"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasAnomaly"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDate"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDepth"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasWell_Name"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDeltaPHI"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDepth"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+            </owl:Restriction>
+        </rdf:type>
+        <hasAnomaly rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasAnomaly>
+        <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2029-06-17 00:00:00</hasDate>
+        <hasDeltaPHI rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-0.1</hasDeltaPHI>
+        <hasDepth rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2999.5</hasDepth>
+        <hasGR rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">235.25</hasGR>
+        <hasWell_Name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NEWBY</hasWell_Name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#well3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#well3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#Well"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDate"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDepth"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasWell_Name"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDeltaPHI"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDepth"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+            </owl:Restriction>
+        </rdf:type>
+        <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2029-06-18 00:00:00</hasDate>
+        <hasDeltaPHI rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.0</hasDeltaPHI>
+        <hasDepth rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3000.0</hasDepth>
+        <hasGR rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">285.47</hasGR>
+        <hasWell_Name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NEWBY</hasWell_Name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#well4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#well4">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#Well"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDate"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDepth"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasWell_Name"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDeltaPHI"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDepth"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+            </owl:Restriction>
+        </rdf:type>
+        <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2029-06-19 00:00:00</hasDate>
+        <hasDeltaPHI rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">4.4</hasDeltaPHI>
+        <hasDepth rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3000.5</hasDepth>
+        <hasGR rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">305.87</hasGR>
+        <hasWell_Name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NEWBY</hasWell_Name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#well5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#well5">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#Well"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDate"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDepth"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasWell_Name"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDeltaPHI"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDepth"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+            </owl:Restriction>
+        </rdf:type>
+        <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2029-06-20 00:00:00</hasDate>
+        <hasDeltaPHI rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">4.9</hasDeltaPHI>
+        <hasDepth rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3001.0</hasDepth>
+        <hasGR rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">291.37</hasGR>
+        <hasWell_Name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NEWBY</hasWell_Name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#well6 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#well6">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#Well"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDate"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDepth"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasWell_Name"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDeltaPHI"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDepth"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+            </owl:Restriction>
+        </rdf:type>
+        <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2029-06-21 00:00:00</hasDate>
+        <hasDeltaPHI rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">4.2</hasDeltaPHI>
+        <hasDepth rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3001.5</hasDepth>
+        <hasGR rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">252.41</hasGR>
+        <hasWell_Name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NEWBY</hasWell_Name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#well7 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#well7">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#Well"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasAnomaly"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDate"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDepth"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasWell_Name"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDeltaPHI"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDepth"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+            </owl:Restriction>
+        </rdf:type>
+        <hasAnomaly rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasAnomaly>
+        <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2029-06-22 00:00:00</hasDate>
+        <hasDeltaPHI rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.3</hasDeltaPHI>
+        <hasDepth rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3002.0</hasDepth>
+        <hasGR rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">208.53</hasGR>
+        <hasWell_Name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NEWBY</hasWell_Name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#well8 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#well8">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#Well"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasAnomaly"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDate"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDepth"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasWell_Name"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDeltaPHI"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDepth"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+            </owl:Restriction>
+        </rdf:type>
+        <hasAnomaly rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasAnomaly>
+        <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2029-06-23 00:00:00</hasDate>
+        <hasDeltaPHI rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-0.2</hasDeltaPHI>
+        <hasDepth rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3002.5</hasDepth>
+        <hasGR rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">169.07</hasGR>
+        <hasWell_Name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NEWBY</hasWell_Name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#well9 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#well9">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#Well"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDate"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDepth"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasWell_Name"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDeltaPHI"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDepth"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+            </owl:Restriction>
+        </rdf:type>
+        <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2029-06-24 00:00:00</hasDate>
+        <hasDeltaPHI rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.5</hasDeltaPHI>
+        <hasDepth rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3003.0</hasDepth>
+        <hasGR rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">136.52</hasGR>
+        <hasWell_Name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NEWBY</hasWell_Name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Rules
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#x">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#gr">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#deltaphi">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description>
+        <swrl2:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrl2:isRuleEnabled>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">S1</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasGR"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#x"/>
+                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#gr"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#Well"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#x"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasDeltaPHI"/>
+                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#x"/>
+                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#deltaphi"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                                <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#lessThan"/>
+                                                <swrl:arguments>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                        <rdf:first rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#deltaphi"/>
+                                                        <rdf:rest>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</rdf:first>
+                                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                            </rdf:Description>
+                                                        </rdf:rest>
+                                                    </rdf:Description>
+                                                </swrl:arguments>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#hasAnomaly"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/untitled-ontology-2#x"/>
+                        <swrl:argument2 rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrl:argument2>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
 </rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+
