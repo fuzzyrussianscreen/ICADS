@@ -196,6 +196,7 @@ def printDF(df):
     plt.ion()
 
     dfNames = pd.DataFrame(pd.unique(df['Well Name']))
+    print(pd.DataFrame(pd.unique(df['Well Name'])))
 
     dfNames = dfNames.drop(np.where(dfNames[0] == 'Recruit F9')[0]).to_numpy()
     # print(dfNames)
@@ -233,10 +234,10 @@ def printDF(df):
             df_subset.plot(ax=axex, legend=False, color="r", marker='s', linewidth=0)
 
         df_subset = dataForName.loc[df_subset.index]
-        #owl_ontology = UsingOntology(df_subset)
+        owl_ontology = UsingOntology(df_subset)
         #print(owl_ontology)
-        #if len(owl_ontology) > 0:
-        #    owl_ontology["GR"].plot(ax=axex, legend=False, color="b", marker='o', linewidth=0)
+        if len(owl_ontology) > 0:
+            owl_ontology["GR"].plot(ax=axex, legend=False, color="b", marker='o', linewidth=0)
 
         i += 1
     plt.ioff()
