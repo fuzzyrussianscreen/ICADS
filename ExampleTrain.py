@@ -1,29 +1,30 @@
-
 import numpy as np
 import pandas as pd
 import csv
 import ctypes
-import flask.scaffold
+# import flask.scaffold
 
 from tensorflow import keras
 from tensorflow.keras import layers
 from matplotlib import pyplot as plt
 from owlready2 import *
-from pandas import Timestamp
-from flask import Flask, jsonify, Blueprint, render_template
-from prometheus_flask_exporter import PrometheusMetrics
 
 
-#app = Flask(__name__)
-#metricsProm = PrometheusMetrics(app)
-#blueprint = Blueprint('api', __name__, url_prefix='/api')
-#api = Api(blueprint, doc='/documentation', title = "Search anomaly",
+# from pandas import Timestamp
+# from flask import Flask, jsonify, Blueprint, render_template
+# from prometheus_flask_exporter import PrometheusMetrics
+
+
+# app = Flask(__name__)
+# metricsProm = PrometheusMetrics(app)
+# blueprint = Blueprint('api', __name__, url_prefix='/api')
+# api = Api(blueprint, doc='/documentation', title = "Search anomaly",
 #		  description = "Search anomaly") #,doc=False
-#api.namespace('names', description='Manage names')
+# api.namespace('names', description='Manage names')
 
-#app.register_blueprint(blueprint)
+# app.register_blueprint(blueprint)
 
-#app.config['SWAGGER_UI_JSONEDITOR'] = True
+# app.config['SWAGGER_UI_JSONEDITOR'] = True
 
 def SearchAnomaly(df, axex):
     split = 0.5
@@ -49,9 +50,9 @@ def SearchAnomaly(df, axex):
         output = []
         for i in range(0, len(values) - time_steps + 1):
             output.append(values[i: (i + time_steps)])
-            #print(i, values[(i - time_steps//2): (i + time_steps//2)])
-            #pd.DataFrame(array).plot(ax=axex, label=str(i),color="b")
-            #pd.DataFrame(x_train[0][i], index=range(0, len(x_train[0][i]))).plot(ax=axex, label = str(i), color="black")
+            # print(i, values[(i - time_steps//2): (i + time_steps//2)])
+            # pd.DataFrame(array).plot(ax=axex, label=str(i),color="b")
+            # pd.DataFrame(x_train[0][i], index=range(0, len(x_train[0][i]))).plot(ax=axex, label = str(i), color="black")
 
         return np.stack(output)
 
@@ -59,10 +60,10 @@ def SearchAnomaly(df, axex):
     # print(df_test_value.values)
 
     x_train = create_sequences(df_training_value.values)
-    #print("Training input shape: ", x_train.shape)
+    # print("Training input shape: ", x_train.shape)
 
     x_test = create_sequences(df_test_value.values)
-    #print("Test input shape: ", x_test.shape)
+    # print("Test input shape: ", x_test.shape)
 
     model = keras.Sequential(
         [
@@ -79,7 +80,7 @@ def SearchAnomaly(df, axex):
             ),
             layers.Dropout(rate=0.2),
 
-            #layers.LSTM(32, return_sequences=True, activation="relu"),
+            # layers.LSTM(32, return_sequences=True, activation="relu"),
 
             layers.Conv1DTranspose(
                 filters=32, kernel_size=7, padding="same", strides=2, activation="relu"
@@ -102,55 +103,20 @@ def SearchAnomaly(df, axex):
         ],
     )
 
-
-
-    #plt.plot(history.history["loss"], label="Training Loss")
-    #plt.plot(history.history["val_loss"], label="Validation Loss")
-    #plt.legend()
-    #plt.show()
-
     x_train_pred = model.predict(x_train)
 
-
-    #x_train = x_train.transpose()
-
-    #pd.DataFrame(df_training_value.values).plot(ax=axex, label='x_train', color="r", marker='s', linewidth=0)
-    #for i in range(0, 11):
-        #print(pd.DataFrame(x_train_pred[0][i]))
-        #pd.DataFrame(x_train_pred[0][i]).plot(ax=axex, label = str(i), color="b")
-        #pd.DataFrame(x_train[0][i]).plot(ax=axex, label = str(i), color="black")
-
     train_mae_loss = np.mean(np.abs(x_train_pred - x_train), axis=1)
-    # plt.hist(train_mae_loss, bins=50)
-    # plt.xlabel("Train MAE loss")
-    # plt.ylabel("No of samples")
-    # plt.show()
 
     threshold = np.max(train_mae_loss)
-    #pd.DataFrame(np.max(train_mae_loss)).plot(ax=axex, label="threshold", color="green")
 
-    # plt.plot(x_train[0])
-    # plt.plot(x_train_pred[0])
-    # plt.show()
-    #for k in range(0, 1):
     x_test_pred = model.predict(x_test)
     x_test_pred = x_test_pred.transpose()
 
-        #for i in range(0, len(x_test_pred[0])):
-            #pd.DataFrame(x_test_pred[0][i], index=range(i, i+len(x_test_pred[0][i]))).plot(ax=axex, label = str(i), color="b")
-
-    #pd.DataFrame(df_test_value.values).plot(ax=axex, label='x_train', color="r", marker='s', linewidth=0)
-
     test_mae_loss = np.mean(np.abs(x_test_pred - x_test), axis=1)
-    test_mae_loss = test_mae_loss.reshape((-1))
-
-    # plt.hist(test_mae_loss, bins=50)
-    # plt.xlabel("test MAE loss")
-    # plt.ylabel("No of samples")
-    # plt.show()
+    # test_mae_loss = test_mae_loss.reshape((-1))
 
     anomalies = test_mae_loss > threshold
-    #print(anomalies)
+    # print(anomalies)
     anomalous_data_indices = []
     for data_idx in range(TIME_STEPS - 1, len(df_test_value) - TIME_STEPS + 1):
 
@@ -158,14 +124,12 @@ def SearchAnomaly(df, axex):
         if np.all(anomalies[data_idx - TIME_STEPS + 1: data_idx]):
             anomalous_data_indices.append(data_idx)
     df_subset = test_df.iloc[anomalous_data_indices]
-    print(df_subset)
+    # print(df_subset)
 
     return df_subset
-    # plt.show()
 
 
 def UsingOntology(df_anomaly):
-
     onto = get_ontology("prototype_rasshir.owl").load()
 
     for individual in onto.individuals():
@@ -234,26 +198,25 @@ def UsingOntology(df_anomaly):
             # print(onto.hasDepth.range)
             index += 1
 
-        #sync_reasoner_pellet(infer_property_values=True, infer_data_property_values=True, debug=3)
+        # sync_reasoner_pellet(infer_property_values=True, infer_data_property_values=True, debug=3)
 
-        onto.save(file="prototypePython.owl", format="rdfxml")
+        # onto.save(file="prototypePython.owl", format="rdfxml")
 
-    ctypes.windll.user32.MessageBoxW(0, "Запустите правила", "Пауза", 1)
+    # ctypes.windll.user32.MessageBoxW(0, "Запустите правила", "Пауза", 1)
 
     onto2 = get_ontology("prototypePython.owl").load()
-    #print(df_anomaly.index)
+    # print(df_anomaly.index)
     anomalous_data_indices = []
-    for SWRLanomaly in onto2.individuals():
-        print(SWRLanomaly)
-        if type(SWRLanomaly.hasAnomaly) == type(""):
-            #print(pd.to_datetime(SWRLanomaly.hasDate, format='%Y-%m-%d') unit='s'))
+    for SWRLanomaly in onto2.search(is_a = onto2.Measurement):
+        #print(SWRLanomaly.hasAnomaly)
+        if SWRLanomaly.hasAnomaly is not None:
+            # print(pd.to_datetime(SWRLanomaly.hasDate, format='%Y-%m-%d') unit='s'))
 
-            anomalous_data_indices.append(pd.to_datetime(SWRLanomaly.hasDate, format='%Y-%m-%d'))
-    #print(anomalous_data_indices.index)
-    df_subset = df_anomaly.loc[anomalous_data_indices]
-    #onto.save(file="prototypePython.owl", format="rdfxml")
+            anomalous_data_indices.append([pd.to_datetime(SWRLanomaly.hasDate, format='%Y-%m-%d'), SWRLanomaly.hasAnomaly])
+    #print(anomalous_data_indices)
+    # onto.save(file="prototypePython.owl", format="rdfxml")
 
-    return df_subset
+    return anomalous_data_indices
 
 
 def printDF(df):
@@ -271,8 +234,8 @@ def printDF(df):
         dataForName = df.loc[df['Well Name'] == Name]
         dataForName = dataForName.sort_values("Depth")
 
-        fig, axex = plt.subplots(nrows=1, ncols=1)
-        fig.subplots_adjust( left = 0.040, bottom = 0.060, right = 0.990, top = 0.990)
+        fig, axex = plt.subplots(nrows=3, ncols=1)
+        fig.subplots_adjust(left=0.040, bottom=0.060, right=0.990, top=0.990)
         # axex.plot(dataForName.index, dataForName["PHIND"], label="PHIND")
 
         # axex.plot(dataForName.index, dataForName["GR"], label="GR")
@@ -282,7 +245,7 @@ def printDF(df):
         # axex.plot(dataForName.index, dataForName["DeltaPHI"], label="DeltaPHI")
         # axex.legend()
 
-        #plt.show()
+        # plt.show()
 
         # plt.plot(data["date"], data["DeltaPHI"], label=Name)
         # plt.figure(i, figsize=(5, 5))
@@ -290,17 +253,34 @@ def printDF(df):
         # plt.subplot(1, 9, i)
 
         df_subset = SearchAnomaly(dataForName[["GR"]], axex)
-        #print(df_subset)
-        #plt.subplots_adjust(wspace=0, hspace=i)
-        #dataForName[["GR"]].plot(ax=axex, legend=True, color="black")
-        if len(df_subset) > 0:
-            df_subset.plot(ax=axex, legend=False, color="r", marker='s', linewidth=0)
-
+        # print(df_subset)
+        # plt.subplots_adjust(wspace=0, hspace=i)
+        dataForName[["GR"]].plot(ax=axex[0], legend=True, color="black")
+        dataForName[["DeltaPHI"]].plot(ax=axex[1], legend=True, color="black")
+        dataForName[["ILD_log10"]].plot(ax=axex[2], legend=True, color="black")
         df_subset = dataForName.loc[df_subset.index]
+        if len(df_subset) > 0:
+            df_subset[["GR"]].plot(ax=axex[0], legend=False, color="r", marker='s', linewidth=0)
+            df_subset[["DeltaPHI"]].plot(ax=axex[1], legend=False, color="r", marker='s', linewidth=0)
+            df_subset[["ILD_log10"]].plot(ax=axex[2], legend=False, color="r", marker='s', linewidth=0)
+
         owl_ontology = UsingOntology(df_subset)
         print(owl_ontology)
-        if len(owl_ontology) > 0:
-            owl_ontology["GR"].plot(ax=axex, legend=False, color="b", marker='o', linewidth=0)
+        for anomaly in owl_ontology:
+            df_subset = pd.DataFrame(dataForName.loc[anomaly[0]]).transpose()
+            print(df_subset)
+            #print(dataForName)
+            if anomaly[1] == "rule1":
+                color = "b"
+            elif anomaly[1] == "rule2":
+                color = "y"
+
+            df_subset["GR"].plot(ax=axex[0], legend=False, color=color, marker='o', linewidth=0)
+            #axex[0].plot(y=df_subset["GR"], x=, legend=False, color=color, marker='o', linewidth=0)
+            df_subset["DeltaPHI"].plot(ax=axex[1], legend=False, color=color, marker='o', linewidth=0)
+            #df_subset["DeltaPHI"].plot(ax=axex[1], legend=False, color=color, marker='o', linewidth=0)
+            df_subset["ILD_log10"].plot(ax=axex[2], legend=False, color=color, marker='o', linewidth=0)
+            #df_subset["ILD_log10"].plot(ax=axex[2], legend=False, color=color, marker='o', linewidth=0)
 
         i += 1
     plt.ioff()
@@ -335,11 +315,10 @@ with open('facies_data.csv', newline='') as csvfile:
 # print(dfSource)
 printDF(dfSource)
 
-
-#@app.route('/')
-#def index():
+# @app.route('/')
+# def index():
 #    return render_template("index.html",tables=[dfSource.to_html()], titles=dfSource.columns.values)
-    #return render_template("data.html",data=dfSource.to_html())
+# return render_template("data.html",data=dfSource.to_html())
 
-#if __name__ == "__main__":
+# if __name__ == "__main__":
 #    app.run()
