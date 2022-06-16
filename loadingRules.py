@@ -11,10 +11,8 @@ from nltk.tokenize import RegexpTokenizer
 def synsetsCheck(word, classes):
     synsets = wordnet.synsets(word.lower())
     for synset in synsets:
-        #synset = synset.lemmas()[0].name().capitalize()
         for lemma in synset.lemmas():
             lemma = lemma.name().capitalize()
-            #print(lemma)
             if lemma in classes:
                 return lemma
     return False

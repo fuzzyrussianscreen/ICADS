@@ -135,7 +135,7 @@ def UsingOntology(df_anomaly):
     for individual in onto.individuals():
         destroy_entity(individual)
     # print(df_anomaly)
-
+    #onto.save(file="prototypePython.owl", format="rdfxml")
     with onto:
 
         # class Well2(Thing):
@@ -164,6 +164,7 @@ def UsingOntology(df_anomaly):
 
         well = None
         index = 0
+        listMesure = []
         for date, anomaly in df_anomaly.iterrows():
             # print(str(index))
             if well == None or well.name != anomaly['Well Name']:
@@ -186,34 +187,29 @@ def UsingOntology(df_anomaly):
             list.append(Gamma_emission)
             list.append(Index_petrophysics)
             measurment.hasMetrics = list
-            # measurment.hasMetrics = DeltaPHI
-            # measurment.hasMetrics = Depth
-            # measurment.hasMetrics = Gamma_emission
-            # measurment.hasMetrics = Index_petrophysics
+            listMesure.append(measurment)
 
-            # print(Decimal(anomaly['DeltaPHI']*1000))
-            # well.hasDeltaPHI = (anomaly['DeltaPHI'])
-            # well.hasDepth = (anomaly['Depth'])
-            # well.hasGR = (anomaly['GR'])
-            # print(onto.hasDepth.range)
             index += 1
+        if well is not None:
+            well.hasMeasurement = listMesure
+
 
         # sync_reasoner_pellet(infer_property_values=True, infer_data_property_values=True, debug=3)
 
-        # onto.save(file="prototypePython.owl", format="rdfxml")
+        #onto.save(file="prototypePython.owl", format="rdfxml")
 
-    # ctypes.windll.user32.MessageBoxW(0, "Запустите правила", "Пауза", 1)
+    ctypes.windll.user32.MessageBoxW(0, "Запустите правила", "Пауза", 1)
 
     onto2 = get_ontology("prototypePython.owl").load()
     # print(df_anomaly.index)
     anomalous_data_indices = []
     for SWRLanomaly in onto2.search(is_a = onto2.Measurement):
-        #print(SWRLanomaly.hasAnomaly)
+        print(SWRLanomaly.hasAnomaly)
         if SWRLanomaly.hasAnomaly is not None:
             # print(pd.to_datetime(SWRLanomaly.hasDate, format='%Y-%m-%d') unit='s'))
 
             anomalous_data_indices.append([pd.to_datetime(SWRLanomaly.hasDate, format='%Y-%m-%d'), SWRLanomaly.hasAnomaly])
-    #print(anomalous_data_indices)
+    print(anomalous_data_indices)
     # onto.save(file="prototypePython.owl", format="rdfxml")
 
     return anomalous_data_indices
@@ -229,7 +225,7 @@ def printDF(df):
     # ['CHURCHMAN BIBLE' 'CROSS H CATTLE' 'LUKE G U' 'NEWBY' 'NOLAN' 'Recruit F9' 'SHANKLE' 'SHRIMPLIN']
 
     i = 1
-    for Name in dfNames[5:6]:
+    for Name in dfNames[3:4]:
         Name = Name[0]
         dataForName = df.loc[df['Well Name'] == Name]
         dataForName = dataForName.sort_values("Depth")
@@ -274,6 +270,8 @@ def printDF(df):
                 color = "b"
             elif anomaly[1] == "rule2":
                 color = "y"
+            elif anomaly[1] == "rule3":
+                color = "pink"
 
             df_subset["GR"].plot(ax=axex[0], legend=False, color=color, marker='o', linewidth=0)
             #axex[0].plot(y=df_subset["GR"], x=, legend=False, color=color, marker='o', linewidth=0)
