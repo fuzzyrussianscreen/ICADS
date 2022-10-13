@@ -205,7 +205,7 @@ def UsingOntology(df_anomaly):
     anomalous_data_indices = []
     for SWRLanomaly in onto2.search(is_a = onto2.Measurement):
         print(SWRLanomaly.hasAnomaly)
-        if SWRLanomaly.hasAnomaly is not None:
+        if SWRLanomaly.hasAnomaly is not None and SWRLanomaly.hasDate is not None:
             # print(pd.to_datetime(SWRLanomaly.hasDate, format='%Y-%m-%d') unit='s'))
 
             anomalous_data_indices.append([pd.to_datetime(SWRLanomaly.hasDate, format='%Y-%m-%d'), SWRLanomaly.hasAnomaly])
@@ -249,28 +249,36 @@ def printDF(df):
         # plt.subplot(1, 9, i)
 
         df_subset = SearchAnomaly(dataForName[["GR"]], axex)
+        #df_subset = []
         # print(df_subset)
         # plt.subplots_adjust(wspace=0, hspace=i)
         dataForName[["GR"]].plot(ax=axex[0], legend=True, color="black")
         dataForName[["DeltaPHI"]].plot(ax=axex[1], legend=True, color="black")
         dataForName[["ILD_log10"]].plot(ax=axex[2], legend=True, color="black")
         df_subset = dataForName.loc[df_subset.index]
-        if len(df_subset) > 0:
-            df_subset[["GR"]].plot(ax=axex[0], legend=False, color="r", marker='s', linewidth=0)
-            df_subset[["DeltaPHI"]].plot(ax=axex[1], legend=False, color="r", marker='s', linewidth=0)
-            df_subset[["ILD_log10"]].plot(ax=axex[2], legend=False, color="r", marker='s', linewidth=0)
+        #if len(df_subset) > 0:
+            #df_subset[["GR"]].plot(ax=axex[0], legend=False, color="r", marker='s', linewidth=0)
+            #df_subset[["DeltaPHI"]].plot(ax=axex[1], legend=False, color="r", marker='s', linewidth=0)
+            #df_subset[["ILD_log10"]].plot(ax=axex[2], legend=False, color="r", marker='s', linewidth=0)
 
         owl_ontology = UsingOntology(df_subset)
+        print("anomaly")
         print(owl_ontology)
+        #owl_ontology = []
         for anomaly in owl_ontology:
+
+            if anomaly[0] is None:
+                continue
             df_subset = pd.DataFrame(dataForName.loc[anomaly[0]]).transpose()
             print(df_subset)
             #print(dataForName)
-            if anomaly[1] == "rule1":
+            color = None
+            print(anomaly[1][0])
+            if anomaly[1][0] == "rule1":
                 color = "b"
-            elif anomaly[1] == "rule2":
+            elif anomaly[1][0] == "rule2":
                 color = "y"
-            elif anomaly[1] == "rule3":
+            elif anomaly[1][0] == "rule3":
                 color = "pink"
 
             df_subset["GR"].plot(ax=axex[0], legend=False, color=color, marker='o', linewidth=0)
